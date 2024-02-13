@@ -26,7 +26,7 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
     swal.getConfirmButton('td.warning input').addEventListener('click', function () {
       window.location.reload();
       // console.log('hii')
-       navigate('/')
+      //  navigate('/')
     })
   }
   
@@ -58,10 +58,10 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
    
   const Update = (e) => {
     e.preventDefault();
-    console.log(semester1);
+    // console.log(semester1);
          axios.put('http://localhost:5500/updateUser/'+id, { Roll1, Name1, semester1, Branch1 })
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 showpopup(Roll1);  
               //  navigate('/')
     })
@@ -86,7 +86,7 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
     } */
         }
 
-<button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.reload(); }}>X</button>
+<button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.href='/Users'; }}>X</button>
 
    <div className="form-group">
     <label htmlFor="ROLL_NUMBER">Roll Number</label>

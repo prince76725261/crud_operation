@@ -17,6 +17,10 @@ body {
     background-size: cover;
     background-position: center;
 }
+.popup {
+    text-align: center;
+    text-decoration-line: black;
+  }
 
 .wrapper{
  width: 400px;
@@ -128,3 +132,5 @@ text-decoration: underline;
 .register-link p a  :hover{
     text-decoration:underline;
 }
+
+

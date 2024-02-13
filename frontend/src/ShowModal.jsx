@@ -1,195 +1,104 @@
-import React, { useState, Component } from "react"
+import React, { useEffect, useState } from "react"
+import './Modal.css'
+// import LoginForm from './LoginForm';
+import { FaUser } from "react-icons/fa";
+import { RiLockPasswordFill } from "react-icons/ri";
+// import React,{useState,Component} from "react"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import './Users.css'
 
-import Modal from 'react';
-
-
-
-
-const handleClick = (Roll) => {
+const handleClick = () => {
     Swal.fire({
-        icon: "success",
-        title: "🥰",
-        text: "Added Successfully!",
-        footer: '<a href="#">You Have been added?</a>'
-    });
-    Swal.getConfirmButton('td.warning input').addEventListener('click', function () {
-        window.location.reload();
-
-    })
+  icon: "success",
+  title: "🥰",
+  text: "User Added Successfully!",
+  footer: '<a href="#">You Have been Added?</a>'
+});
+Swal.getConfirmButton('td.warning input').addEventListener('click', function () {
+     console.log('hii')
+     window.location.href = '/Users';
+    //   navigate('/')
+  })
 }
-
-
-// function handleClick(Roll) {
-//     Swal.fire({
-//         icon: "success",
-//         title: "🥰",
-//         text: "Added Successfully!",
-//         footer: '<a href="#">You have been added?</a>',
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             closeModal();
-//         }
-//     });
-// }
-
 
 
 
 
 
 function ShowModal() {
-    const [Roll, setRoll] = useState()
-    const [Name, setName] = useState()
-    const [semester, setSemester] = useState()
-    const [Branch, setBranch] = useState()
-    const Submit = (e) => {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmpassword, setConfirmpassword] = useState("");
+    const [branch, setBranch] = useState("");
+    const [semester, setSemester] = useState("");
+    const [name, setName] = useState("");
+    const [roll, setRoll] = useState("");
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5500/ShowModal/", { Roll, Name, semester, Branch })
-            .then(result => {
-                console.log(result)
-            })
-            .catch(err => console.log(err))
-    }
-    return (
+        axios.post("http://localhost:5500/ShowModal/", {
+            username,
+            password,
+            confirmpassword,
+            Branch: branch,
+            semester,
+            Name: name,
+            Roll: roll
+        })
+        .then(result => {
+            console.log("User Added Successfully!");
+            console.log(result);
+            handleClick();
+        })
+        .catch(err => console.log(err));
+    };
 
-        <div className='wrapped2'>
-            <div className='wrapped-2'>
 
-                <form onSubmit={Submit}>
 
-                    <h1>Add New User</h1>
+return (
+    <div className='mywrapper'>
+        
+        <form onSubmit={handleSubmit}>
+            <h1>Add User</h1>
+            <div className="button"><button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.reload(); }}>X</button>
+</div>
+            
+            <div className='input-box'>
 
-                    <div className="form-group">
-                        
-                <button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.reload(); }}>X</button>
-                        <label htmlFor="ROLL_NUMBER">Roll Number</label>
-                        <input type="number" className="form-control" id="roll" aria-describedby="roll_number" placeholder="Enter Your Roll Number" autoComplete="off" onChange={(e) => setRoll(e.target.value)} />
-                        <small id="roll" className="form-text text-muted"></small>
-                    </div>
-
-                    <br></br>
-
-                    <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input type="string" className="form-control" id="name" aria-describedby="name" placeholder="Enter Your Full Name" autoComplete="off" onChange={(e) => setName(e.target.value)} />
-                        <small id="name" className="form-text text-muted"></small>
-                    </div>
-                    <br></br>
-                    <div className="form-group">
-                        <label htmlFor="semester">Semester</label>
-                        <input type="number" className="form-control" id="semester" aria-describedby="semester" placeholder="Enter Semester" autoComplete="off" onChange={(e) => setSemester(e.target.value)} />
-                        <small id="semester" className="form-text text-muted"></small>
-                    </div>
-
-                    <br></br>
-
-                    <div className="form-group">
-                        <label htmlFor="branch">Branch</label>
-                        <input type="string" className="form-control" id="branch" aria-describedby="branch" placeholder="Enter Your Branch" autoComplete="off" onChange={(e) => setBranch(e.target.value)} />
-                        <small id="branch" className="form-text text-muted"></small>
-                    </div>
-
-                    {/* 
-   <div className="form-group">
-     <label htmlFor="exampleInputPassword1">Password</label>
-     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                <input type="text" placeholder='Username' required value={username} onChange={(e) => setUsername(e.target.value)} />
+                <FaUser className='icon' />
             </div>
-             */}
-
-                    <br>
-                    </br>
-
-                    {/* <div className="form-check">
-  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-  <label className="form-check-label" htmlFor="exampleCheck1">Check details correctly</label>
-</div> */}
-
-                    <br></br>
-                    <button type="submit" className="btn btn-primary" onClick={() => { handleClick(Roll); }}>Create</button>
-
-
-
-                </form>
+            <div className='input-box'>
+                <input type="password" placeholder='Password' required value={password} onChange={(e) => setPassword(e.target.value)} />
+                <RiLockPasswordFill className='icon'/>
             </div>
-        </div>
-    )
-}
+            <div className='input-box'>
+                <input type="password" placeholder='Confirm Password' required value={confirmpassword} onChange={(e) => setConfirmpassword(e.target.value)} />
+                <RiLockPasswordFill className='icon'/>
+            </div>
+            <div className='input-box'>
+                <input type="text" placeholder='Branch' required value={branch} onChange={(e) => setBranch(e.target.value)} />
+            </div>
+            <div className='input-box'>
+                <input type="text" placeholder='Semester' required value={semester} onChange={(e) => setSemester(e.target.value)} />
+            </div>
+            <div className='input-box'>
+                <input type="text" placeholder='Name' required value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div className='input-box'>
+                <input type="text" placeholder='Roll' required value={roll} onChange={(e) => setRoll(e.target.value)} />
+            </div>
+            <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+        </form>
+    </div>
+);
+};
+
 
 export default ShowModal;
 
 
 
 
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import Swal from 'sweetalert2';
-// import './Users.css';
-
-// const ShowModal = () => {
-//     const [Roll, setRoll] = useState('');
-//     const [Name, setName] = useState('');
-//     const [semester, setSemester] = useState('');
-//     const [Branch, setBranch] = useState('');
-
-//     const Submit = (e) => {
-//         e.preventDefault();
-//         axios.post("http://localhost:5500/ShowModal/", { Roll, Name, semester, Branch })
-//             .then(result => {
-//                 console.log(result);
-//                 Swal.fire({
-//                     icon: 'success',
-//                     title: '🥰',
-//                     text: 'Added Successfully!',
-//                     footer: '<a href="#">You Have been added?</a>'
-//                 });
-//                 setRoll('');
-//                 setName('');
-//                 setSemester('');
-//                 setBranch('');
-//             })
-//             .catch(err => console.log(err));
-//     }
-
-//     return (
-//         <div className='wrapped2'>
-//             <div className='wrapped-2'>
-//                 <form onSubmit={Submit}>
-//                 <button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.reload(); }}>X</button>
-//                     <h1>Add New User</h1>
-//                     <div className="form-group">
-//                         <label htmlFor="ROLL_NUMBER">Roll Number</label>
-//                         <input type="number" className="form-control" id="roll" aria-describedby="roll_number" placeholder="Enter Your Roll Number" autoComplete="off" value={Roll} onChange={(e) => setRoll(e.target.value)} />
-//                         <small id="roll" className="form-text text-muted"></small>
-//                     </div>
-//                     <br></br>
-//                     <div className="form-group">
-//                         <label htmlFor="name">Name</label>
-//                         <input type="string" className="form-control" id="name" aria-describedby="name" placeholder="Enter Your Full Name" autoComplete="off" value={Name} onChange={(e) => setName(e.target.value)} />
-//                         <small id="name" className="form-text text-muted"></small>
-//                     </div>
-//                     <br></br>
-//                     <div className="form-group">
-//                         <label htmlFor="semester">Semester</label>
-//                         <input type="number" className="form-control" id="semester" aria-describedby="semester" placeholder="Enter Semester" autoComplete="off" value={semester} onChange={(e) => setSemester(e.target.value)} />
-//                         <small id="semester" className="form-text text-muted"></small>
-//                     </div>
-//                     <br></br>
-//                     <div className="form-group">
-//                         <label htmlFor="branch">Branch</label>
-//                         <input type="string" className="form-control" id="branch" aria-describedby="branch" placeholder="Enter Your Branch" autoComplete="off" value={Branch} onChange={(e) => setBranch(e.target.value)} />
-//                         <small id="branch" className="form-text text-muted"></small>
-//                     </div>
-//                     <br></br>
-//                     <button type="submit" className="btn btn-primary">Create</button>
-//                 </form>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default ShowModal;
