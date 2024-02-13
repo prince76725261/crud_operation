@@ -86,6 +86,8 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
     } */
         }
 
+<button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.reload(); }}>X</button>
+
    <div className="form-group">
     <label htmlFor="ROLL_NUMBER">Roll Number</label>
           <input type="number" className="form-control" id="ROLL_NUMBER" aria-describedby="roll_number" placeholder="Enter Your Roll Number" value={Roll1} onChange={(e) => setRoll(e.target.value)} />

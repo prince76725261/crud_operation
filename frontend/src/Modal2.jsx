@@ -22,9 +22,9 @@ const MyModal2 = () => {
       {/* Render the modal only when showModal is true */}
       {showModal && (
         <div className="modal-container">
+          <button className="close-btn" onClick={closeModal}>X</button>
           <h1>Add User</h1>
           {/* Add your form here */}
-          <button onClick={() => setShowModal(false)}>Close</button>
         </div>
       )}
     </>
