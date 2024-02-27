@@ -25,6 +25,13 @@ Cloning a repo: git clone <-link->
 add: git add (filename) or git add .(means all files)
 commit : git commit -m "message"
 
+git rm --cached :- removed from staging area( file is present in hard disk) .
+git rm <-filename-> (to remove the file)
+
+git log (to track the last commit)
+git log -p -2 ( to track the last 2 commits)
+
+
 #Push command 
 
 *push :- upload local repo content to remote repo
@@ -45,13 +52,14 @@ git push origin main or git push -u origin main (u set upstream)
  git branch (to check branch)
  git branch -m main(to rename branch )
  git checkout <-branch name-> (to navigate )
+ git checkout -f (to restore or see all the changes done in past)
  git checkout -b <-new branch name-> (to create new branch)
  git branch -d <-branch name-> (to delete branch)(you cannot delete the same branch where you stand at)
 
  #Merging code(branches) 
  way 1 
 
- git diff <-branch name -> (to compare commits, branches , files and more )
+ git diff <-branch name -> (to compare commits, branches , files and more )(compare working directory with staging one)
  git merge <-branch name-> (to merge 2 branches )
 
  way 2
