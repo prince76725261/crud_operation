@@ -9,6 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 const { fileURLToPath } = require('url');
 const connectDB=require('./config/db');
 const dotenv=require('dotenv');
+const secret="Prince@123"
 
 const app = express()
 app.use(cors())

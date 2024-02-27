@@ -45,8 +45,8 @@ git push origin main or git push -u origin main (u set upstream)
  git branch (to check branch)
  git branch -m main(to rename branch )
  git checkout <-branch name-> (to navigate )
- git checkout -b ,-new branch name-> (to create new branch)
- git branch -d <-branch name-> (to delete branch)
+ git checkout -b <-new branch name-> (to create new branch)
+ git branch -d <-branch name-> (to delete branch)(you cannot delete the same branch where you stand at)
 
  #Merging code(branches) 
  way 1 
@@ -79,4 +79,8 @@ git reset <-commit hash->
 git reset --hard <-commit hash->
 
 #fork :- make a copy (rough)
-take someone's code and do the mandatory change and can do teh pull request (generally for open source)
+take someone's code and do the mandatory change and can do the pull request (generally for open source)
+
+#cherry-pick :- you can do the changes in your code according to the changes done by others in their code .
+ OR you can copy the features from other branch .
+ command :- git cherry-pick <-commit id->.
