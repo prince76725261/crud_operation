@@ -1,0 +1,146 @@
+*Node.js  is a Javascript running on the server.
+*In 2009 an idea came in the mind of Ryan Dahl (google engineer) that why not run javascript outside browser, so he took V8 engine and embedded in a C++ program and called it Node.exe later on became Nodejs.
+*V8 engine(google engine) - Javascript engine to convert javascript code to machine understandable code.
+*Non-Blocking, single threaded, uses:- (I/O bound , Data streaming application, real time chat application)
+*We cannot use Nodejs in CPU intensive application.
+* Nodejs REPL feature is useful in experimenting with Node.js coddes and to debug Javascript codes.
+Read:- Reads user's input, parses the input into Javascript data-structure,  and stores in the memory.
+eval:- takes and evaluates the data structure.
+Print:- Prints the result.
+Loop:- Lopps the above command until the user presses ctrl+c.
+
+Node.js core modules :- Nodejs has a ste of built-in modules which you can use without ant further installation.
+
+*We require module to get its data and use it in other component.
+fs.writeFileSync:- write the data if the file is present otherwise create file and then overwrite .
+fs.appendFileSync:- append(add) new data .
+syntax:- fs.writeFileSync("read.txt" , "message which you want to add or overwrite" );
+
+Node.js includes an additional data type called buffer(not available in browser's javascript). Buffer is mainly used to store binary data.
+While rreading from a file or receiving packets over the network.
+
+const buf_data=f.readFileSync("read.txt");
+org_data= buf_data.toString();
+console.log(org_data);
+
+fs.mkdirSync("Thapa") to create new file
+fs.writeFileSync("bio.txt", "") to write in empty space or overwrite
+fs.appendFileSync("thapa/bio.txt" , "plz subscribe")
+(you will get buffer data because encoding is not specified)
+fs.appendFileSync("thapa/bio.txt" ,"utf8" "plz subscribe")
+(you will get string data)
+fs.renameSync("thapa/bio.txt","thapa/mybio.txt")
+# To delete
+ fs.unlinkSync("thapa/mybio.txt");
+
+#Async 
+
+const fs = require("fs);
+ fs.writeFile('read.txt','today is awesome day' );
+
+fs.writeFile("read.txt", "todat is awesome day:", (err)=>{
+console.log("files are created");
+console.log(err);
+});
+fs.appendFile("read.txt" , "hii",(err)=>{
+    console.log("completed");
+});
+
+# do crud operation using Async 
+
+fs.mkdir("thapa", (err)=> {
+    console.log("folder created");
+});
+
+fs.writeFile("./thapa/bio.txt", "plz like and share my videos", (err)=>{
+    console.log("files created");
+});
+
+fs.appendFile("./thapa/bio.txt", "plz like and share my videos", (err)=>{
+    console.log("files data appended");
+});
+
+fs.readFile("./thapa/bio.txt","utf-8", "plz like and share my videos", (err,data)=>{
+    console.log("files data appended");
+});
+
+fs.rename("./thapa/bio.txt", "./thapa/mybio.txt",(err)=>{
+    console.log("rename done");
+});
+
+fs.unlink("./thapa/mybio.txt", (err)=>{
+    console.log(file deleted");
+});
+
+fs.rmdir("./thapa" , (err)=>{
+    console.log("folder deleted");
+});
+
+#OS modules
+code :-
+const os=require("os");
+console.log(os.arch());
+console.log(os.hostname());
+
+const freeMemory= os.freemem();
+console.log(freeMemory);
+
+(in GB) console.log(`${freeMemory/1024/1024/1024}`);
+
+const totalMemory= os.totalmem();
+console.log(totalMemory);
+
+(in GB) console.log(`${totalMemory/1024/1024/1024}`);
+
+
+#Path Modules :- The path module provides utilities for working with file and directory paths. it can be accessed
+const path = require('node:path');
+console.log(path.dirname('E:/nodejsYoutube/PathModule/path.js'));
+console.log(path.extname('E:/nodejsYoutube/PathModule/path.js'));
+console.log(path.basename('E:/nodejsYoutube/PathModule/path.js'));
+console.log(path.parse());
+
+const myPath= path.parse('E:/nodejsYoutube/PathModule/path.js');
+ console.log(myPath.name);
+
+
+ # How to make my own modules and use it in any other file
+  
+  // in one file
+  const add=(a,b)=>{
+    // here a and b arguments
+    return a+b;
+  }
+
+  // in other file 
+ const add=require("./oper);
+  console.log(5,5);
+
+  // also don't forget to add export
+
+  #exporting multiple modules 
+
+  // in one file
+
+  const oper=require("./oper");
+  console.log(oper);
+  console.log(oper.add(5,5));
+  console.log(oper.sub(10,5));
+
+  // in other file 
+
+  module.exports.add=add;
+  module.exports.sub=sub;
+  or 
+  module.export={add,sub};    
+
+  #other way to export multiple modules 
+
+  const {add, sub}=require("./oper");
+  console.log(add(5,5));
+  console.log(sub(10,5));
+
+  #npm 
+ 
+ 
+̀

@@ -110,9 +110,10 @@ const RegisterForm = () => {
                 </div>
 
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>Register</button>
+
             </form>
+
             <br></br>
-            <button style={{ position: 'right-top', top: '30px', right: '40px' }} className='btn btn-info' onClick={() => window.location.href = '/login'}>Go To Login</button>
 
         </div>
     );

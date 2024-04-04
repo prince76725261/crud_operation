@@ -86,7 +86,7 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
     } */
         }
 
-<button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.href='/Users'; }}>X</button>
+{/* <button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.href='/Users'; }}>X</button> */}
 
    <div className="form-group">
     <label htmlFor="ROLL_NUMBER">Roll Number</label>
@@ -138,3 +138,75 @@ function MyModal2({userIdUpdate,Roll,Name,semester,Branch}) {
     )
 }
 export default MyModal2;
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import Swal from 'sweetalert2'
+
+// function MyModal2({ userIdUpdate, Roll, Name, semester, Branch }) {
+//   const navigate = useNavigate();
+//   const id = userIdUpdate;
+//   const [Roll1, setRoll] = useState(Roll);
+//   const [Name1, setName] = useState(Name);
+//   const [semester1, setSemester] = useState(semester);
+//   const [Branch1, setBranch] = useState(Branch);
+//   const [imageUrl, setImageUrl] = useState('');
+
+//   const showpopup = (Roll) => {
+//     var swal = Swal;
+//     swal.fire({
+//       icon: "success",
+//       title: "🥰",
+//       text: "Updated Successfully!",
+//       footer: '<a href="#">You Have been updated?</a>'
+//     });
+//     swal.getConfirmButton('td.warning input').addEventListener('click', function () {
+//       window.location.reload();
+//     });
+//   };
+
+//   useEffect(() => {
+//     axios.get('http://localhost:5500/getUser/' + id)
+//       .then(result => {
+//         console.log(result);
+//         setRoll(result.data.Roll);
+//         setName(result.data.Name);
+//         setSemester(result.data.semester);
+//         setBranch(result.data.Branch);
+//         const imageUrl='da0e4d57-a63d-494f-b4d2-f6dcbff66e33';
+//         // Assuming your API returns an image URL, update the state with the image URL
+//         setImageUrl(user.profilePic.uuid);
+//       })
+//       .catch(err => console.log(err));
+//   }, []);
+
+//   const Update = (e) => {
+//     e.preventDefault();
+//     axios.put('http://localhost:5500/updateUser/' + id, { Roll1, Name1, semester1, Branch1 })
+//       .then(result => {
+//         showpopup(Roll1);
+//       })
+//       .catch(err => console.log(err));
+//   };
+
+//   return (
+//     <div>
+//       <h1>Update User</h1>
+//       <button className="close-btn" onClick={() => { setRoll(''); setName(''); setSemester(''); setBranch(''); window.location.href = '/Users'; }}>X</button>
+//       <img src={user.profilePic.uuid} alt="not found" />
+//       <div>
+//         <h3>Roll Number: {Roll1}</h3>
+//         <h3>Name: {Name1}</h3>
+//         <h3>Semester: {semester1}</h3>
+//         <h3>Branch: {Branch1}</h3>
+//       </div>
+//       <button type="submit" className="btn btn-primary" onClick={Update}>Update</button>
+//     </div>
+//   );
+// }
+
+// export default MyModal2;
