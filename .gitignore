@@ -4,3 +4,4 @@ backend/config/db.js
 .env
 git.txt
 
+.vercel
