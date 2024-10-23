@@ -12,10 +12,12 @@ body {
     align-items: center;
     min-height: 100vh;
     /* background: url('/Users/prsingh65/Downloads/crud_operation-main/crud_operation/frontend/src/LoginForm/background_image.jpeg') ; */
-    background-image: url('/Users/prsingh65/Downloads/crud_operation-main/crud_operation/frontend/src/LoginForm/background_image 3.57.44 PM.jpeg');
+    /* background-image: url('/Users/prsingh65/Downloads/crud_operation-main/crud_operation/frontend/src/LoginForm/background_image 3.57.44 PM.jpeg'); */
+    background-image: url('/Users/prsingh69/crud_operation/frontend/src/LoginForm/Screenshot 2024-07-17 at 3.42.01 PM.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: rgb(170, 179, 179);
 }
 .popup {
     text-align: center;
