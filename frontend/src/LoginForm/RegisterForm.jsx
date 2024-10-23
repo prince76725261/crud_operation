@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react"
-import './RegistrationForm.css'
-// import LoginForm from './LoginForm';
+import React, { useEffect, useState } from "react";
+import './RegistrationForm.css';
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-// import React,{useState,Component} from "react"
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const handleClick = () => {
     Swal.fire({
