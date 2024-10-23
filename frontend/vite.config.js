@@ -5,15 +5,30 @@
 // export default defineConfig({
 //   plugins: [react()],
 // })
+// import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
+
+// export default defineConfig({
+//   plugins: [react()],
+//   // root: 'src',
+//   build: {
+//     rollupOptions: {
+//       external: ['react-icons/fa', 'react-icons/ri','uuid'],
+//     },
+//   },
+// });
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: 'src',
+  root: '.', // Set the root to the current directory
   build: {
-    rollupOptions: {
-      external: ['react-icons/fa', 'react-icons/ri','uuid'],
-    },
+    outDir: 'dist', // Output directory for production
+    emptyOutDir: true, // Clear the outDir before each build
   },
 });
+
+
+
