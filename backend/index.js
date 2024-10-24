@@ -164,7 +164,3 @@ app.get('/api/image/:uuid', async (req, res) => {
 app.listen(5500, () => {
     console.log("server is running well")
 })
-
-
-
-

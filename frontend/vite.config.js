@@ -10,7 +10,7 @@
 
 // export default defineConfig({
 //   plugins: [react()],
-//   // root: 'src',
+//   root: 'src',
 //   build: {
 //     rollupOptions: {
 //       external: ['react-icons/fa', 'react-icons/ri','uuid'],
@@ -23,9 +23,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: '.', // Set the root to the current directory
+  root: '.',
   build: {
-    outDir: 'dist', // Output directory for production
+    outDir: '../dist', // Output directory for production
     emptyOutDir: true, // Clear the outDir before each build
   },
 });
