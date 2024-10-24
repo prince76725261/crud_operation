@@ -25,8 +25,8 @@ export default defineConfig({
   plugins: [react()],
   root: '.',
   build: {
-    outDir: '../dist', // Output directory for production
-    emptyOutDir: true, // Clear the outDir before each build
+    outDir: '../dist',
+    emptyOutDir: true,
   },
 });
 
